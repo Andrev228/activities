@@ -86,17 +86,17 @@ function App() {
   return (
       <AppContainer>
           <AccordionMenu>
-              <AccordionMenuItem onClick={toggleAccountView}>Account</AccordionMenuItem>
+              <AccordionMenuItem tabIndex="0" onClick={toggleAccountView}>Account</AccordionMenuItem>
               {isAccountOpen &&
                   <>
-                      <AccordionMenuSubItem value={PROFILE_VIEW} onClick={setPageContentView}>{PROFILE_VIEW}</AccordionMenuSubItem>
-                      <AccordionMenuSubItem value={SETTINGS_VIEW} onClick={setPageContentView}>{SETTINGS_VIEW}</AccordionMenuSubItem>
+                      <AccordionMenuSubItem tabIndex="1" value={PROFILE_VIEW} onClick={setPageContentView}>{PROFILE_VIEW}</AccordionMenuSubItem>
+                      <AccordionMenuSubItem tabIndex="2" value={SETTINGS_VIEW} onClick={setPageContentView}>{SETTINGS_VIEW}</AccordionMenuSubItem>
                   </>}
-              <AccordionMenuItem onClick={toggleActivitiesView}>Activities</AccordionMenuItem>
+              <AccordionMenuItem tabIndex="3" onClick={toggleActivitiesView}>Activities</AccordionMenuItem>
               {isActivitiesOpen &&
                   <>
-                      <AccordionMenuSubItem value={RECREATIONAL_VIEW} onClick={setPageContentView}>{RECREATIONAL_VIEW}</AccordionMenuSubItem>
-                      <AccordionMenuSubItem value={COOKING_VIEW} onClick={setPageContentView}>{COOKING_VIEW}</AccordionMenuSubItem>
+                      <AccordionMenuSubItem tabIndex="4" value={RECREATIONAL_VIEW} onClick={setPageContentView}>{RECREATIONAL_VIEW}</AccordionMenuSubItem>
+                      <AccordionMenuSubItem tabIndex="5" value={COOKING_VIEW} onClick={setPageContentView}>{COOKING_VIEW}</AccordionMenuSubItem>
                   </>}
         </AccordionMenu>
         <PageContent>

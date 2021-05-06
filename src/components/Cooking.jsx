@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import Preloader from '../UI/Preloader.jsx';
-
-const CookingList = styled.ul`
-    list-style-type: none;
-`;
+import ActivityItem from '../UI/ActivityItem.jsx';
 
 export default function Cooking() {
     const [ activities, setActivity ] = useState({});
@@ -23,16 +19,5 @@ export default function Cooking() {
             })
     }, []);
 
-    return isFetching ? <Preloader /> : (
-        <CookingList>
-            <li>
-                Activity: {activities.activity}
-            </li>
-            <li>
-                Type: {activities.type}
-            </li>
-            <li>
-                Participants: {activities.participants}
-            </li>
-        </CookingList>);
+    return isFetching ? <Preloader /> : <ActivityItem { ...activities } />;
 }
