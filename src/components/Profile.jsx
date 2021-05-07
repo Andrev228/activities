@@ -16,5 +16,5 @@ export default function Profile({ userData: { firstName, lastName } }) {
         return `${firstName} ${lastName}`;
     }, [firstName, lastName]);
 
-    return <UserName>{getUserName()}</UserName>;
+    return <UserName data-testid="profile-view">{getUserName()}</UserName>;
 }

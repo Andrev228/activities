@@ -16,7 +16,7 @@ export default function Settings({ userData, setUserData }) {
     }, []);
 
     return (
-        <form>
+        <form data-testid="settings-form">
             <FormSection>
                 <label htmlFor="firstName">First name:</label>
                 <input

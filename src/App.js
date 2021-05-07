@@ -6,10 +6,10 @@ import Recreational from './components/Recreational.jsx';
 import Settings from './components/Settings.jsx';
 import Welcome from './components/Welcome.jsx';
 
-const PROFILE_VIEW = 'Profile';
-const COOKING_VIEW = 'Cooking';
-const RECREATIONAL_VIEW = 'Recreational';
-const SETTINGS_VIEW = 'Settings';
+export const PROFILE_VIEW = 'Profile';
+export const SETTINGS_VIEW = 'Settings';
+export const COOKING_VIEW = 'Cooking';
+export const RECREATIONAL_VIEW = 'Recreational';
 
 const viewsMap = {
   [PROFILE_VIEW]: Profile,
@@ -73,9 +73,9 @@ function App() {
   
   const setPageContentView = useCallback((e) => {
     /*
-    Despite e.target.value and e.target.innerHTML has the same values
-    I decided to have value attribute in <li /> tags to store view name 
-    as it is more reliable than innerHTML
+      Despite e.target.value and e.target.innerHTML has the same values
+      I decided to have value attribute in <li /> tags to store view name 
+      as it is more reliable than innerHTML
     */
    const ViewTitle = e.target.getAttribute("value");
    setPageView(ViewTitle);
@@ -86,27 +86,48 @@ function App() {
   return (
       <AppContainer>
           <AccordionMenu>
-              <AccordionMenuItem tabIndex="0" onClick={toggleAccountView}>Account</AccordionMenuItem>
+              <AccordionMenuItem
+                  data-testid="account-menu-item"
+                  tabIndex="0"
+                  onClick={toggleAccountView}>Account</AccordionMenuItem>
               {isAccountOpen &&
                   <>
-                      <AccordionMenuSubItem tabIndex="1" value={PROFILE_VIEW} onClick={setPageContentView}>{PROFILE_VIEW}</AccordionMenuSubItem>
-                      <AccordionMenuSubItem tabIndex="2" value={SETTINGS_VIEW} onClick={setPageContentView}>{SETTINGS_VIEW}</AccordionMenuSubItem>
+                      <AccordionMenuSubItem
+                          data-testid="profile-menu-subitem"
+                          tabIndex="1"
+                          value={PROFILE_VIEW}
+                          onClick={setPageContentView}>{PROFILE_VIEW}</AccordionMenuSubItem>
+                      <AccordionMenuSubItem
+                          data-testid="settings-menu-subitem"
+                          tabIndex="2"
+                          value={SETTINGS_VIEW}
+                          onClick={setPageContentView}>{SETTINGS_VIEW}</AccordionMenuSubItem>
                   </>}
-              <AccordionMenuItem tabIndex="3" onClick={toggleActivitiesView}>Activities</AccordionMenuItem>
+              <AccordionMenuItem
+                  data-testid="activities-menu-item"
+                  tabIndex="3"
+                  onClick={toggleActivitiesView}>Activities</AccordionMenuItem>
               {isActivitiesOpen &&
                   <>
-                      <AccordionMenuSubItem tabIndex="4" value={RECREATIONAL_VIEW} onClick={setPageContentView}>{RECREATIONAL_VIEW}</AccordionMenuSubItem>
-                      <AccordionMenuSubItem tabIndex="5" value={COOKING_VIEW} onClick={setPageContentView}>{COOKING_VIEW}</AccordionMenuSubItem>
+                      <AccordionMenuSubItem
+                          data-testid="recreational-menu-subitem"
+                          tabIndex="4"
+                          value={RECREATIONAL_VIEW}
+                          onClick={setPageContentView}>{RECREATIONAL_VIEW}</AccordionMenuSubItem>
+                      <AccordionMenuSubItem
+                          data-testid="cooking-menu-subitem"
+                          tabIndex="5"
+                          value={COOKING_VIEW}
+                          onClick={setPageContentView}>{COOKING_VIEW}</AccordionMenuSubItem>
                   </>}
         </AccordionMenu>
         <PageContent>
             {pageView ? (
               <>
                 <PageContentTitle>{pageView}</PageContentTitle>
-                <CurrentPageView userData={ userData } setUserData={ setUserData } />
+                <CurrentPageView userData={userData} setUserData={setUserData} />
               </>
             ) : <Welcome />}
-            
         </PageContent>
     </AppContainer>
   );

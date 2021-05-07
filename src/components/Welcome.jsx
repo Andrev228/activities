@@ -7,5 +7,5 @@ const PageContainer = styled.div`
 `;
 
 export default function Welcome() {
-    return <PageContainer>Welcome to the web-site!</PageContainer>;
+    return <PageContainer data-testid="welcome-view">Welcome to the web-site!</PageContainer>;
 }
