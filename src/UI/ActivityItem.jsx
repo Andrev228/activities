@@ -6,9 +6,9 @@ const ActivityList = styled.ul`
 `;
 
 
-export default function ActivityItem({ activity, type, participants }) {
+export default function ActivityItem({ activity = '', type = '', participants = 0 }) {
     return (
-        <ActivityList>
+        <ActivityList data-testid="activity-list">
             <li>
                 Activity: {activity}
             </li>

@@ -25,7 +25,7 @@ const Spinner = styled.div`
 
 export default function Preloader() {
     return (
-        <PreloaderWrapper>
+        <PreloaderWrapper data-testid="preloader">
             <Spinner />
         </PreloaderWrapper>)
 }
