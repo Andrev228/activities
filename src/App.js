@@ -10,12 +10,14 @@ export const PROFILE_VIEW = 'Profile';
 export const SETTINGS_VIEW = 'Settings';
 export const COOKING_VIEW = 'Cooking';
 export const RECREATIONAL_VIEW = 'Recreational';
+export const WELCOME_VIEW = 'Welcome';
 
 const viewsMap = {
   [PROFILE_VIEW]: Profile,
   [SETTINGS_VIEW]: Settings,
   [COOKING_VIEW]: Cooking,
-  [RECREATIONAL_VIEW]: Recreational
+  [RECREATIONAL_VIEW]: Recreational,
+  [WELCOME_VIEW]: Welcome
 }
 
 const AppContainer = styled.div`
@@ -56,7 +58,7 @@ const PageContent = styled.div`
 function App() {
   const [ isAccountOpen, toggleAccountStatus ] = useState(false);
   const [ isActivitiesOpen, toggleActivitiesStatus ] = useState(false);
-  const [ pageView, setPageView ] = useState();
+  const [ pageView, setPageView ] = useState(WELCOME_VIEW);
   const [ userData, setUserData ] = useState({
     firstName: '',
     lastName: '',
@@ -122,12 +124,11 @@ function App() {
                   </>}
         </AccordionMenu>
         <PageContent>
-            {pageView ? (
+            {pageView &&
               <>
                 <PageContentTitle>{pageView}</PageContentTitle>
                 <CurrentPageView userData={userData} setUserData={setUserData} />
-              </>
-            ) : <Welcome />}
+              </>}
         </PageContent>
     </AppContainer>
   );
